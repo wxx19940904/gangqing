@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no">
+	<title>简易电子琴</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html{
+			font-size: 100px;
+		}
+		body{
+			width: 100%;
+			height: 100%;
+		}
+		.box{
+			    width: 7rem;
+			    height: 4rem;
+			    background: url(459cb0914f3c72728886395763ca913c.jpg);
+			    margin: 20px auto;
+    			background-size: contain;
+			}
+		li{
+			list-style: none;
+		    width: .8rem;
+		    height: 1.9rem;
+		    margin: 2rem .08rem 0 0;
+		    float: left;
+		}
+		li:last-of-type{
+			margin: 2rem 0 0 0;
+		}
+		span{
+			color:#000;
+			font-size: 0.32rem;
+		}		
+	</style>
+<script type="text/javascript">
+		var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+		var per = clientWidth/736;
+		document.documentElement.style.fontSize = per * 100+"px";
+
+		window.onresize = function(){
+			var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+			var per = clientWidth/736;
+			document.documentElement.style.fontSize = per * 100+"px";
+		} 
+
+
+</script>	
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<audio id="play" autoplay></audio>
+</body>
+<script type="text/javascript">
+	// 将对应的音乐放到数组中
+	var music = ["a5.mp3","b5.mp3","c5.mp3","d5.mp3","e5.mp3","f5.mp3","g5.mp3","a5.mp3"],
+	// 将对应的背景图放到数组中
+	 img1 = ["Do.png","Re.png","Mi.png","Fa.png","Sol.png","La.png","Ti.png","Do1.png"];
+
+	//获取节点
+	var list = document.querySelectorAll('li'); 
+	console.log(list);
+	 for (var n = 0; n < list.length; n++) {
+	 	list[n].index = n;
+	 	list[n].addEventListener("touchstart",function(){
+	 		// console.log(this.index);
+			document.getElementById('play').src = music[this.index];
+			for (var i=0; i<img1.length;i++){
+				list[i].style.background="none"
+			}
+			list[this.index].style.background = "url("+img1[this.index]+")";
+			list[this.index].style.backgroundSize =".9rem 1.9rem";
+			//按下键盘时
+			document.onkeydown = function(e) {
+				var pressEvent = e || window.event;
+				var keyCode = '';
+				if(pressEvent.keyCode){
+					keyCode = pressEvent.keyCode;
+				}else if(pressEvent.charCode){
+					keyCode = pressEvent.charCode;
+				}else if(pressEvent.which){
+					keyCode = pressEvent.which;
+				}
+				
+				switch(keyCode){
+					case 65:	// a
+					case 97:
+					case 81:	// q
+					case 113:
+					case 90:	// z
+					case 122:
+						document.getElementById('play').src = music[0];
+						list[0].style.background = "url("+img1[0]+")";
+						list[0].style.backgroundSize =".9rem 1.9rem";
+						break;
+					case 87:	// w
+					case 119:
+						document.getElementById('play').src = music[0];
+						list[0].style.background = "url("+img1[0]+")";
+						list[0].style.backgroundSize =".9rem 1.9rem";
+						break;
+					case 83:	// s
+					case 115:
+					case 88:	// x
+					case 120:
+						document.getElementById('play').src = music[1];
+						list[1].style.background = "url("+img1[1]+")";
+						list[1].style.backgroundSize =".9rem 1.9rem";	
+						break;
+					case 69:	// e
+					case 101:
+						document.getElementById('play').src = music[1];
+						list[1].style.background = "url("+img1[1]+")";
+						list[1].style.backgroundSize =".9rem 1.9rem";
+						break;
+					case 67:	// c
+					case 99:
+					case 68:	// d
+					case 100:
+						document.getElementById('play').src = music[2];
+						list[2].style.background = "url("+img1[2]+")";
+						list[2].style.backgroundSize =".9rem 1.9rem";
+						break;
+					case 70:	// f
+					case 102:
+					case 82:	// r
+					case 114:
+					case 86:	// v
+					case 118:
+						document.getElementById('play').src = music[3];
+						list[3].style.background = "url("+img1[3]+")";
+						list[3].style.backgroundSize =".9rem 1.9rem";
+						break;
+					case 84:	// t
+					case 116:
+						document.getElementById('play').src = music[3];
+						list[3].style.background = "url("+img1[3]+")";
+						list[3].style.backgroundSize =".9rem 1.9rem";
+						break;
+					case 66:	// b
+					case 98:
+					case 71:	// g
+					case 103:
+						document.getElementById('play').src = music[4];
+						list[4].style.background = "url("+img1[4]+")";
+						list[4].style.backgroundSize =".9rem 1.9rem";
+						break;
+					case 89:	// y
+					case 121:
+						document.getElementById('play').src = music[4];
+						list[4].style.background = "url("+img1[4]+")";
+						list[4].style.backgroundSize =".9rem 1.9rem";
+						break;
+					case 72:	// h
+					case 104:
+					case 78:	// n
+					case 110:
+						document.getElementById('play').src = music[5];
+						list[5].style.background = "url("+img1[5]+")";
+						list[5].style.backgroundSize =".9rem 1.9rem";
+						break;
+					case 85:	// u
+					case 117:
+						document.getElementById('play').src = music[5];
+						list[5].style.background = "url("+img1[5]+")";
+						list[5].style.backgroundSize =".9rem 1.9rem";
+						break;
+					case 77:	// m
+					case 109:
+					case 74:	// j
+					case 106:
+						document.getElementById('play').src = music[6];
+						list[6].style.background = "url("+img1[6]+")";
+						list[6].style.backgroundSize =".9rem 1.9rem";
+						break;
+					case 75:	// k
+					case 107:
+					case 73:	// i
+					case 105:
+					case 44:	// ,
+					case 188:
+						document.getElementById('play').src = music[7];
+						list[7].style.background = "url("+img1[7]+")";
+						list[7].style.backgroundSize =".9rem 1.9rem";
+						break;
+					default:
+						break;
+				}
+			}
+		});
+	 }
+
+
+
+
+</script>
+</html>
